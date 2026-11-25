@@ -93,3 +93,28 @@ body {
         font-size: 14px;
     }
 }
+
+.site-footer {
+    font-family: 'Nunito';
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.site-footer p {
+    margin: 0 0 4px;
+}
+
+.site-footer a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
