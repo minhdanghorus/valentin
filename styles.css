@@ -97,7 +97,12 @@ body {
 .site-footer {
     font-family: 'Nunito';
     color: rgb(255, 255, 255);
+    font-size: 12px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     margin-top: 40px;
 }
 
