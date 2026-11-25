@@ -93,3 +93,10 @@ body {
         font-size: 14px;
     }
 }
+
+.site-footer {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #888;
+  padding: 8px 0;
+}
