@@ -1,9 +1,57 @@
+:root {
+    --bg: rgb(189, 225, 122);
+    --text: #1f3300;
+    --link: #0b3d91;
+    --btn-bg: #ffffff;
+    --btn-text: #c62828;
+    --footer-text: #1f3300;
+    --message: #8a1650;
+    --quote: #8a0f55;
+    --toggle-bg: #ffffff;
+    --toggle-text: #1f3300;
+}
+
+:root[data-theme="dark"] {
+    --bg: #1b1f23;
+    --text: #f2f2f2;
+    --link: #8ab4f8;
+    --btn-bg: #2d333b;
+    --btn-text: #ffb3c1;
+    --footer-text: #d0d4d9;
+    --message: #ff9ec7;
+    --quote: #ff9ec7;
+    --toggle-bg: #2d333b;
+    --toggle-text: #f2f2f2;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 6px 12px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    border: 2px solid var(--toggle-text);
+    border-radius: 12px;
+    background-color: var(--toggle-bg);
+    color: var(--toggle-text);
+    z-index: 10;
+}
+
+.theme-toggle:focus-visible {
+    outline: 3px solid var(--link);
+    outline-offset: 2px;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: rgb(189, 225, 122);
+    background-color: var(--bg);
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
@@ -13,7 +61,7 @@ body {
     font-family: 'Nunito';
     font-size: clamp(20px, 4vw, 40px); /* Reduced font size */
     font-weight: bold;
-    color: white;
+    color: var(--text);
     text-align: center;
     margin-top: 20px;
     margin-bottom: 0px;
@@ -21,6 +69,7 @@ body {
 }
 
 .header_text a {
+    color: var(--link);
     display: inline-block;
     word-break: break-word; /* Changed from break-all to break-word */
     max-width: 100%;
@@ -39,7 +88,7 @@ body {
 }
 
 .valentine-message {
-    color: #FF69B4;
+    color: var(--message);
     font-size: clamp(16px, 4vw, 1.5em);
     text-align: center;
     margin: 20px 0;
@@ -48,7 +97,7 @@ body {
 }
 
 .love-quote {
-    color: #FF1493;
+    color: var(--quote);
     font-style: italic;
     text-align: center;
     margin-top: 30px;

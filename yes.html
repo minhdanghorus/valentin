@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Valentine's Day!</title>
+    <script>
+        (function () {
+            var theme;
+            try { theme = localStorage.getItem('theme'); } catch (e) {}
+            if (theme !== 'light' && theme !== 'dark') {
+                theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <link rel="stylesheet" href="./yes_style.css">
   </head>
   <body>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Dark mode" aria-pressed="false"><span id="themeIcon" aria-hidden="true">&#127769;</span></button>
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var toggle = document.getElementById('themeToggle');
+            var icon = document.getElementById('themeIcon');
+            function sync() {
+                var dark = root.getAttribute('data-theme') === 'dark';
+                toggle.setAttribute('aria-pressed', dark ? 'true' : 'false');
+                icon.innerHTML = dark ? '&#9728;&#65039;' : '&#127769;';
+            }
+            toggle.addEventListener('click', function () {
+                var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                try { localStorage.setItem('theme', next); } catch (e) {}
+                sync();
+            });
+            sync();
+        })();
+    </script>
     <div class="container">
       <div class="heart-container">
         <div class="heart"></div>
