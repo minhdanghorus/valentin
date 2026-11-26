@@ -166,3 +166,33 @@ body {
 .site-footer a:hover {
     text-decoration: underline;
 }
+
+.back-to-top {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 6px 12px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    border: 2px solid var(--toggle-text);
+    border-radius: 12px;
+    background-color: var(--toggle-bg);
+    color: var(--toggle-text);
+    z-index: 10;
+}
+
+.back-to-top[hidden] {
+    display: none;
+}
+
+.back-to-top:focus-visible {
+    outline: 3px solid var(--link);
+    outline-offset: 2px;
+}
+
+#top:focus {
+    outline: none;
+}

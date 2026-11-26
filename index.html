@@ -19,6 +19,7 @@
     </head>
     <body>
         <button type="button" class="theme-toggle" id="themeToggle" aria-label="Dark mode" aria-pressed="false"><span id="themeIcon" aria-hidden="true">&#127769;</span></button>
+        <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" hidden><span aria-hidden="true">&#8593;</span></button>
         <script>
             (function () {
                 var root = document.documentElement;
@@ -38,7 +39,22 @@
                 sync();
             })();
         </script>
-        <div class="container" id="top">
+        <script>
+            (function () {
+                var btn = document.getElementById('backToTop');
+                function update() {
+                    btn.hidden = window.scrollY <= 300;
+                }
+                window.addEventListener('scroll', update, { passive: true });
+                btn.addEventListener('click', function () {
+                    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+                    document.getElementById('top').focus({ preventScroll: true });
+                });
+                update();
+            })();
+        </script>
+        <div class="container" id="top" tabindex="-1">
             <div>
                 <h1 class="header_text">Will you be my Valentine</h1>
                 <!-- <h1 class="header_text">Are you free tommorow?</h1> -->
