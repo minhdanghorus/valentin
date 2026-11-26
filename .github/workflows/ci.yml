@@ -15,3 +15,25 @@ jobs:
           node-version: 20
       - name: Validate HTML
         run: npx --yes html-validate "**/*.html"
+
+  image-attributes:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: New images need width, height and loading="lazy"
+        env:
+          BASE: ${{ github.base_ref }}
+        run: |
+          fail=0
+          while IFS= read -r line; do
+            for attr in 'width=' 'height=' 'loading="lazy"'; do
+              if ! grep -qF "$attr" <<<"$line"; then
+                echo "::error::Added <img> is missing $attr (keep the whole tag on one line): $line"
+                fail=1
+              fi
+            done
+          done < <(git diff "origin/$BASE...HEAD" -U0 -- '*.html' | grep '^+' | grep -i '<img' || true)
+          exit $fail
