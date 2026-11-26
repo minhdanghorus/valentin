@@ -23,13 +23,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: New images need width, height and loading="lazy"
+      - name: New images need width, height, loading="lazy" and decoding="async"
         env:
           BASE: ${{ github.base_ref }}
         run: |
           fail=0
           while IFS= read -r line; do
-            for attr in 'width=' 'height=' 'loading="lazy"'; do
+            for attr in 'width=' 'height=' 'loading="lazy"' 'decoding="async"'; do
               if ! grep -qF "$attr" <<<"$line"; then
                 echo "::error::Added <img> is missing $attr (keep the whole tag on one line): $line"
                 fail=1
